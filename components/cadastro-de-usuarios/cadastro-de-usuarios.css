@@ -1,0 +1,18 @@
+*{
+    width: 100%;
+}
+
+.container {
+    background-color: yellow;
+}
+
+.card {
+    width: 30rem;
+    border-radius: 26px;
+    margin-top: 200px;
+    align-items: center;
+}
+
+.image-company {
+    width: fit-content;
+}

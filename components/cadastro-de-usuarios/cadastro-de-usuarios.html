@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="cadastro-de-usuarios.css">
+    <script src="cadastro-de-usuarios.js"></script>
+  </head>
+  <body>
+    <form name="createUserForm" class="d-flex justify-content-center">
+      <div class="card">
+
+        <div class="image-company mt-3 mb-3">
+          <img src="../../src/images/chromasoft.png" class="card-img-top" alt="...">
+       </div>
+
+        <div class="card-body">
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="userName" placeholder="Text">
+            <label for="userName">Nome</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="userEmail" placeholder="name@example.com">
+            <label for="userEmail">Email</label>
+          </div>
+
+          <div class="form-floating">
+            <input type="password" class="form-control" id="userPassword" placeholder="Password">
+            <label for="userPassword">Senha</label>
+          </div> 
+
+          <div class="mt-5 mb-5 d-flex justify-content-center">
+            <a class="btn btn-primary" onclick="createUser()">Cadastrar</a>
+          </div>
+
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
+
