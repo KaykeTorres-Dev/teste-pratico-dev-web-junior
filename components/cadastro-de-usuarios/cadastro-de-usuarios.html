@@ -19,18 +19,31 @@
         <div class="card-body">
 
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="userName" placeholder="Text">
+            <input type="text" class="form-control" id="userName" placeholder="Text" oninput="checkNameInput()">
             <label for="userName">Nome</label>
+
+            <div>
+              <label id="nameValidationFeedback"></label>
+            </div>
           </div>
 
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="userEmail" placeholder="name@example.com">
+            <input type="email" class="form-control" id="userEmail" placeholder="name@example.com" oninput="checkEmailInput()">
             <label for="userEmail">Email</label>
+
+            <div>
+              <label id="emailValidationFeedback"></label>
+            </div>
           </div>
+          
 
           <div class="form-floating">
-            <input type="password" class="form-control" id="userPassword" placeholder="Password">
+            <input type="password" class="form-control" id="userPassword" placeholder="Password" oninput="checkPasswordInput()">
             <label for="userPassword">Senha</label>
+
+            <div>
+              <label id="passwordValidationFeedback"></label>
+            </div>
           </div> 
 
           <div class="mt-5 mb-5 d-flex justify-content-center">
