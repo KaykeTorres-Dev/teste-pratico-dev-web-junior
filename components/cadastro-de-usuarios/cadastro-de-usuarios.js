@@ -1,5 +1,4 @@
 function createUser() {
-    // debugger
     let userName = document.getElementById("userName").value;
     let userEmail = document.getElementById("userEmail").value;
     let userPassword = document.getElementById("userPassword").value;
@@ -45,40 +44,7 @@ function createUser() {
 
     }  else {
         console.log("Pronto para cadastrar");
+        window.location.href = "http://127.0.0.1:5500/listagem-de-usuarios/listagem-de-usuarios.html";
     }  
-
-
-    function checkPassword() {
-        const confirmPassword = this.form.get('confirmPassword')?.value;
-    
-        if (password !== null && password !== '') {
-          if (password.length > 0 && password.length < 6) {
-            this.isPasswordInvalid = true;
-    
-          } else if (password.length >= 6) {
-            this.isPasswordInvalid = false;
-    
-          } if (confirmPassword !== null && confirmPassword !== '') {
-            if (password !== confirmPassword) {
-              this.isPasswordMatch = false;
-            } else {
-              this.isPasswordMatch = true;
-            }
-          }
-    
-        } else if (confirmPassword !== null && confirmPassword !== '') {
-          this.isPasswordInvalid = false;
-          this.isFormInvalid = false;
-        } else {
-          this.isPasswordInvalid = false;
-          this.isConfirmPasswordEmpty = false;
-        }
-      }
-    
-    
-       
-    
-    
-
 
 }
