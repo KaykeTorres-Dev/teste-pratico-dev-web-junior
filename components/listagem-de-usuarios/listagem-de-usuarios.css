@@ -1,0 +1,35 @@
+.delete-user-button {
+    margin-left: 10px;
+}
+
+.navbar, .table-users-layout {
+    background-color: #dddddd !important;
+}
+
+.navbar-logo {
+    width: fit-content;
+}
+
+.table {
+    margin-top: 100px;
+    /* width: 97%; */
+    /* margin-left: 30px; */
+}
+
+.table-users-layout {
+    margin-top: 70px !important;
+    border-radius: 43px !important;
+    height: 560px !important;
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+}
+
+.table-users-title {
+    top: 40px;
+    position: relative;
+}
+
+
+.table-secondary {
+    --bs-table-bg: #dddddd;
+}
