@@ -1,4 +1,6 @@
-document.addEventListener('DOMContentLoaded', () => {
+let originalUserData = {};
+
+document.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
     const userIdParam = urlParams.get("id");
     const userId = document.getElementById("userId");
@@ -15,22 +17,28 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then(response => {
         if (!response.ok) {
-        throw new Error("Erro ao carregar os dados do usuário para edição!");
+        throw new Error("Erro ao carregar os dados do usuário!");
         }
         return response.json();
     })
     .then(data => {
-        userId.value = data.users.id
+        originalUserData = {
+            name:  data.users.name,
+            email:  data.users.email,
+        }
+
+        userId.value = data.users.id,
         userName.value = data.users.name,
         userEmail.value = data.users.email,
         userPassword.value = data.users.password
     })
     .catch(error => {
-        console.error("Erro ao carregar os dados do usuário para edição:", error);
-        alert("Ocorreu um erro ao carregar os dados do usuário para edição. Por favor, tente novamente.");
+        const errorMessage = errorMessageFormatted(error);
+        toast(errorMessage, "danger");
+        console.error("Erro ao carregar os dados do usuário", error);
     });
+    
 });
-
 
 function checkNameInput() {
     const userName = document.getElementById("userName");
@@ -85,7 +93,6 @@ function updateUser() {
     emailValidationFeedback.style.color = "";
 
     const validationMessages = {
-        "all": "Preencha todos os campos",
         "name": "Preencha o campo nome",
         "email": "Preencha o campo email"
     };
@@ -102,24 +109,40 @@ function updateUser() {
       userEmail.classList.add("is-invalid"); 
     }
 
-    
-    if (missingFields.length > 0) {
+    if (missingFields.length == 1) {
         for (const field of missingFields) {
-        const feedbackElement = document.getElementById(`${field}ValidationFeedback`);
-        feedbackElement.textContent = validationMessages[field];
-        feedbackElement.style.color = "red";
+            const feedbackElement = document.getElementById(`${field}ValidationFeedback`);
+            feedbackElement.textContent = validationMessages[field];
+            feedbackElement.style.color = "red";
+            toast("Formulário inválido!", "danger");
         }
         return;
-    }
 
-    const userData = {
-        name: userName.value,
-        email: userEmail.value,
-        password: userPassword.value
-    }
-    console.log(userData);
+    } else if (missingFields.length == 2) {
+        for (const field of missingFields) {
+            const feedbackElement = document.getElementById(`${field}ValidationFeedback`);
+            feedbackElement.textContent = validationMessages[field];
+            feedbackElement.style.color = "red";
+        }
+        toast("Preencha todos os campos!", "danger");
+        return;
 
-    updateUserData(userData);    
+    } else if (!hasUserModifiedData()){
+        toast("Atualize os dados!", "danger");
+        return;
+
+    } else {
+        const userData = {
+            name: userName.value,
+            email: userEmail.value,
+            password: userPassword.value
+        }
+        updateUserData(userData);   
+    }   
+}
+
+function hasUserModifiedData() {
+    return (userName.value !== originalUserData.name || userEmail.value !== originalUserData.email);
 }
 
 function updateUserData(userData) {
@@ -133,16 +156,17 @@ function updateUserData(userData) {
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error("Erro ao atualizar os dados");
+            throw new Error("Erro ao atualizar os dados!");
         }
         return response.json();
     })
     .then(data => {
-        alert("Usuário atualizado com sucesso:", data);
-        window.location.href = 'http://127.0.0.1:5500/components/listagem-de-usuarios/listagem-de-usuarios.html';
+        toast("Usuário atualizado com sucesso!", "success");
+        window.location.href = "http://127.0.0.1:5500/components/listagem-de-usuarios/listagem-de-usuarios.html";
     })
     .catch(error => {
-        console.error("Erro ao atualizar usuário:", error);
-        alert("Ocorreu um erro ao atualizar o usuário. Por favor, tente novamente.");
+        const errorMessage = errorMessageFormatted(error);
+        toast(errorMessage, "danger");
+        console.error("Erro ao atualizar usuário", error);
     });
 }
