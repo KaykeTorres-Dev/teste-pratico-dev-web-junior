@@ -112,14 +112,35 @@ function createUser() {
         return;
     }
 
-    const userInfoObject = {
+    const userData = {
         name: userName.value,
         email: userEmail.value,
         password: userPassword.value
     }
-               
-    // TODO: Fazer o crud para realizar o envio dos dados do usuário para o server.
-    
-    console.log("Pronto para cadastrar", userInfoObject);
-    // window.location.href = "http://127.0.0.1:5500/listagem-de-usuarios/listagem-de-usuarios.html";
+
+    sendUserData(userData);    
+}
+
+function sendUserData(userData) {
+    fetch('http://127.0.0.1:8000/api/create-user', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao enviar os dados');
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert('Usuário criado com sucesso');
+        window.location.href = 'http://127.0.0.1:5500/components/listagem-de-usuarios/listagem-de-usuarios.html';
+    })
+    .catch(error => {
+        console.error('Erro ao criar usuário:', error);
+        alert('Ocorreu um erro ao criar o usuário. Por favor, tente novamente.');
+    });
 }
