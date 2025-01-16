@@ -45,7 +45,7 @@ function checkPasswordInput() {
     const userPassword = document.getElementById("userPassword");
 
     if (userPassword.value !== "") {
-        if (userPassword.value.length > 0 && userPassword.value.length < 5) {
+        if (userPassword.value.length > 0 && userPassword.value.length <= 5) {
             passwordValidationFeedback.textContent = "A senha tem que ter no mínimo 6 caracteres";
             passwordValidationFeedback.style.color = "red";
             userPassword.classList.add("is-invalid"); 
@@ -79,7 +79,6 @@ function createUser() {
     passwordValidationFeedback.style.color = "";
 
     const validationMessages = {
-        "all": "Preencha todos os campos",
         "name": "Preencha o campo nome",
         "email": "Preencha o campo email",
         "password": "Preencha o campo senha"
@@ -97,50 +96,66 @@ function createUser() {
       userEmail.classList.add("is-invalid"); 
     }
 
-    if (userPassword.value === "") {
+    if (userPassword.value === "" || userPassword.value.length <= 5) {
       missingFields.push("password");
       userPassword.classList.add("is-invalid"); 
     }
   
-    
-    if (missingFields.length > 0) {
+
+    if (missingFields.length > 0 && missingFields.length < 3) {
+       
         for (const field of missingFields) {
-        const feedbackElement = document.getElementById(`${field}ValidationFeedback`);
-        feedbackElement.textContent = validationMessages[field];
-        feedbackElement.style.color = "red";
+            const feedbackElement = document.getElementById(`${field}ValidationFeedback`);
+            feedbackElement.textContent = validationMessages[field];
+            feedbackElement.style.color = "red";
+            toast("Formulário inválido!", "danger");
         }
         return;
-    }
 
-    const userData = {
-        name: userName.value,
-        email: userEmail.value,
-        password: userPassword.value
-    }
+    } else if (missingFields.length == 3) {
+        for (const field of missingFields) {
+            const feedbackElement = document.getElementById(`${field}ValidationFeedback`);
+            feedbackElement.textContent = validationMessages[field];
+            feedbackElement.style.color = "red";
+        }
+        toast("Preencha todos os campos!", "danger");
+        return;
 
-    sendUserData(userData);    
+    } else {
+        const userData = {
+            name: userName.value,
+            email: userEmail.value,
+            password: userPassword.value
+        }
+    
+        sendUserData(userData); 
+    }   
 }
 
 function sendUserData(userData) {
-    fetch('http://127.0.0.1:8000/api/create-user', {
-        method: 'POST',
+    fetch("http://127.0.0.1:8000/api/create-user", {
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json"
         },
         body: JSON.stringify(userData)
     })
     .then(response => {
-        if (!response.ok) {
-            throw new Error('Erro ao enviar os dados');
+        if (!response.ok && response.status !== 422) {
+            throw new Error("Erro ao enviar os dados");
+        } else if (!response.ok && response.status == 422) {
+            throw new Error("Email já está cadastrado, por favor digite outro email!");
         }
         return response.json();
     })
     .then(data => {
-        alert('Usuário criado com sucesso');
-        window.location.href = 'http://127.0.0.1:5500/components/listagem-de-usuarios/listagem-de-usuarios.html';
+        toast("Usuário criado com sucesso!", "success");
+        window.location.href = "http://127.0.0.1:5500/components/listagem-de-usuarios/listagem-de-usuarios.html";
     })
     .catch(error => {
-        console.error('Erro ao criar usuário:', error);
-        alert('Ocorreu um erro ao criar o usuário. Por favor, tente novamente.');
+        const errorMessage = error.toString();
+        const toastMessage = errorMessage.slice(7);
+        toast(toastMessage, "danger");
+        console.error("Erro ao criar usuário:", error);
     });
 }
