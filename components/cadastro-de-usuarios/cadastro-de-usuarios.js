@@ -153,9 +153,8 @@ function sendUserData(userData) {
         window.location.href = "http://127.0.0.1:5500/components/listagem-de-usuarios/listagem-de-usuarios.html";
     })
     .catch(error => {
-        const errorMessage = error.toString();
-        const toastMessage = errorMessage.slice(7);
-        toast(toastMessage, "danger");
-        console.error("Erro ao criar usuário:", error);
+        const errorMessage = errorMessageFormatted(error);
+        toast(errorMessage, "danger");
+        console.error("Erro ao criar usuário", error);
     });
 }
