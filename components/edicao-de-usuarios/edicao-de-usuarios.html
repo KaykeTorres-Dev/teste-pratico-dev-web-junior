@@ -11,48 +11,71 @@
     <script src="/utils/format-error-message/format-error-message.js"></script>
   </head>
   <body>
-    <form name="createUserForm" class="d-flex justify-content-center">
-      <div class="card">
-
-        <div class="image-company mt-3 mb-3">
-          <img src="../../src/images/chromasoft.png" class="card-img-top" alt="...">
-       </div>
-
-        <div class="card-body">
-
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="userId" placeholder="Text" hidden>
+    <div class="background">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="http://127.0.0.1:5500/components/cadastro-de-usuarios/cadastro-de-usuarios.html">
+            <img src="../../src/images/chromasoft.png" alt="" class="navbar-logo">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:5500/components/cadastro-de-usuarios/cadastro-de-usuarios.html">Cadastro</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:5500/components/listagem-de-usuarios/listagem-de-usuarios.html">Usuários cadastrados</a>
+              </li>
+            </ul>
           </div>
+        </div>
+      </nav>
 
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="userName" placeholder="Text" oninput="checkNameInput()">
-            <label for="userName">Nome</label>
+      <div class="d-flex justify-content-center">
+        <div class="card">
 
-            <div>
-              <label id="nameValidationFeedback"></label>
+          <div class="mt-4">
+            <h1>Editar</h1>
+        </div>
+
+          <div class="card-body">
+
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="userId" placeholder="Text" hidden>
             </div>
-          </div>
 
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="userEmail" placeholder="name@example.com" oninput="checkEmailInput()">
-            <label for="userEmail">Email</label>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="userName" placeholder="Text" oninput="checkNameInput()">
+              <label for="userName">Nome</label>
 
-            <div>
-              <label id="emailValidationFeedback"></label>
+              <div>
+                <label id="nameValidationFeedback"></label>
+              </div>
             </div>
-          </div>
 
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="userPassword" placeholder="Text" hidden>
-          </div>
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="userEmail" placeholder="name@example.com" oninput="checkEmailInput()">
+              <label for="userEmail">Email</label>
 
-          <div class="mt-5 mb-5 d-flex justify-content-center">
-            <a class="btn btn-primary" onclick="updateUser()">Atualizar</a>
-          </div>
+              <div>
+                <label id="emailValidationFeedback"></label>
+              </div>
+            </div>
 
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="userPassword" placeholder="Text" hidden>
+            </div>
+
+            <div class="mt-5 mb-5 d-grid gap-2">
+              <a class="btn btn-primary" onclick="updateUser()">Atualizar</a>
+            </div>
+
+          </div>
         </div>
       </div>
-    </form>
+    </div>
   </body>
 </html>
 
