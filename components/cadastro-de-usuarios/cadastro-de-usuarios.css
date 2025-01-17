@@ -1,6 +1,20 @@
-*{
-    width: 100%;
+.navbar {
+    background-color: #dddddd !important;
 }
+
+.navbar-logo {
+    width: fit-content;
+}
+
+.background {
+    background-image: url("/src/images/create-user-bg.jpg");
+    background-size: cover;
+    display: inline-block;
+    height: 100vh;
+    width: 100vw;
+    background-position-y: center;
+}
+  
 
 .container {
     background-color: yellow;
@@ -9,10 +23,11 @@
 .card {
     width: 30rem;
     border-radius: 26px;
-    margin-top: 200px;
+    margin-top: 173px;
     align-items: center;
+    box-shadow: 1px 1px 16px black;
 }
 
-.image-company {
-    width: fit-content;
+.card-body {
+    width: 100%;
 }

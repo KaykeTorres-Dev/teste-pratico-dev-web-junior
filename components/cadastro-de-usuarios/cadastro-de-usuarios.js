@@ -108,8 +108,8 @@ function createUser() {
             const feedbackElement = document.getElementById(`${field}ValidationFeedback`);
             feedbackElement.textContent = validationMessages[field];
             feedbackElement.style.color = "red";
-            toast("Formulário inválido!", "danger");
         }
+        toast("Formulário inválido!", "danger");
         return;
 
     } else if (missingFields.length == 3) {
@@ -142,7 +142,7 @@ function sendUserData(userData) {
     })
     .then(response => {
         if (!response.ok && response.status !== 422) {
-            throw new Error("Erro ao enviar os dados");
+            throw new Error("Erro ao enviar os dados!");
         } else if (!response.ok && response.status == 422) {
             throw new Error("Email já está cadastrado, por favor digite outro email!");
         }
