@@ -11,7 +11,7 @@ fetch("http://127.0.0.1:8000/api/get-users", {
   return response.json();
 })
 .then(serverData => {
-  const usersData = serverData.users.data;
+  const usersData = serverData.users;
   const tableBody = document.querySelector("table tbody");
 
   usersData.forEach(user => {
