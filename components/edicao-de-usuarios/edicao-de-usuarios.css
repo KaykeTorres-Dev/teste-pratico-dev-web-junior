@@ -1,9 +1,41 @@
+@media only screen and (max-width: 991px) {
+    .nav-item-users-list{
+        bottom: 40px !important;
+        left: 82px !important;
+        position: relative !important;
+        margin-left: 5px;
+    }
+
+    .navbar-logo, .nav-item-create-user {
+        margin-top: 5px;
+    }
+
+    .nav-item-create-user {
+        margin-left: 8px;
+    }
+}
+
+@media only screen and (max-height: 700px) {
+    .card {
+        margin-top: 30px !important;
+        height: 467px;
+    }
+}
+
+
 .navbar {
     background-color: #dddddd !important;
+    height: 71px;
 }
 
 .navbar-logo {
     width: fit-content;
+    margin-left: 12px;
+}
+
+.nav-items {
+    float: right;
+    margin-top: 3px;
 }
 
 .background {
@@ -30,3 +62,4 @@
 .card-body {
     width: 100%;
 }
+

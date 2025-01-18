@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then(response => {
         if (!response.ok) {
-        throw new Error("Erro ao carregar os dados do usuário!");
+        throw new Error("Erro ao carregar os dados do usuário, por favor tente novamente!");
         }
         return response.json();
     })
