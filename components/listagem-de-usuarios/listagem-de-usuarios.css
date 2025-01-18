@@ -24,6 +24,10 @@
     .table-scroll {
         max-height: 251px !important;
     }
+
+    .no-data-container {
+        margin-top: 50px !important;
+    }
 }
 
 .navbar {
@@ -91,6 +95,23 @@
 .modal-custom {
     --bs-modal-header-border-color: #a6aaad !important;
     --bs-modal-footer-border-color: #a6aaad !important;
+}
+
+.no-data-container {
+    margin-top: 60px;
+}
+
+.no-data-img {
+    background-size: cover;
+    width: 10%;
+}
+
+.no-data-message {
+    margin-top: 20px;
+}
+
+.d-none {
+    display: none !important;
 }
 
 

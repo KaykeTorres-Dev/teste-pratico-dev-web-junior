@@ -12,18 +12,49 @@ fetch("http://127.0.0.1:8000/api/get-users", {
 })
 .then(serverData => {
   const usersData = serverData.users;
+  const tableHead = document.querySelector("table thead");
   const tableBody = document.querySelector("table tbody");
 
-  usersData.forEach(user => {
-    const tableRow = createTableRow(user);
-    tableBody.appendChild(tableRow);
-  });
+  const noDataContainer = document.getElementById("no-data");
+
+  if (usersData.length === 0) {
+    noDataContainer.classList.remove("d-none");
+  
+  } else {
+    noDataContainer.classList.add("d-none");
+
+    const tableRowHead = createTableHead();
+    tableHead.appendChild(tableRowHead);
+
+    usersData.forEach(user => {
+      const tableRow = createTableRow(user);
+      tableBody.appendChild(tableRow);
+    });
+  }
 })
 .catch(error => {
   const errorMessage = errorMessageFormatted(error);
   toast(errorMessage, "danger");
   console.error("Erro ao carregar lista de usuários:", error);
 });
+
+function createTableHead() {
+  const tableRowHead = document.createElement("tr");
+
+  const nameHead = document.createElement("th");
+  nameHead.textContent = "Nome";
+  tableRowHead.appendChild(nameHead);
+
+  const emailHead = document.createElement("th");
+  emailHead.textContent = "Email";
+  tableRowHead.appendChild(emailHead);
+
+  const actionsHead = document.createElement("th");
+  actionsHead.textContent = "Ações";
+  tableRowHead.appendChild(actionsHead);
+
+  return tableRowHead;
+}
 
 function createTableRow(user) {
   const tableRow = document.createElement("tr");
