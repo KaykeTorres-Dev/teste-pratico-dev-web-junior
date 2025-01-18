@@ -6,7 +6,7 @@ fetch("http://127.0.0.1:8000/api/get-users", {
 })
 .then(response => {
   if (!response.ok) {
-    throw new Error("Erro ao carregar lista de usuários!");
+    throw new Error("Erro ao carregar lista de usuários, por favor tente novamente!");
   }
   return response.json();
 })
