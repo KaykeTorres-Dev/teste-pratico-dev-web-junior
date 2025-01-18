@@ -8,23 +8,21 @@
     <link rel="stylesheet" href="cadastro-de-usuarios.css">   
     <script src="cadastro-de-usuarios.js"></script>
     <script src="/utils/toast/toast.js"></script>
+    <script src="/utils/format-error-message/format-error-message.js"></script>
   </head>
   <body>
     <div class="background">
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary d-flex">
+        <div>
           <a class="navbar-brand" href="http://127.0.0.1:5500/components/cadastro-de-usuarios/cadastro-de-usuarios.html">
             <img src="../../src/images/chromasoft.png" alt="" class="navbar-logo">
           </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavDropdown">
+          <div class="d-flex justify-content-between nav-items" id="navbarNavDropdown">
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5500/components/cadastro-de-usuarios/cadastro-de-usuarios.html">Cadastro</a>
+              <li class="nav-item nav-item-create-user">
+                <a class="nav-link active" aria-current="page"  href="http://127.0.0.1:5500/components/cadastro-de-usuarios/cadastro-de-usuarios.html">Cadastro</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item nav-item-users-list">
                 <a class="nav-link" href="http://127.0.0.1:5500/components/listagem-de-usuarios/listagem-de-usuarios.html">Usuários cadastrados</a>
               </li>
             </ul>
@@ -69,7 +67,7 @@
               </div>
             </div> 
   
-            <div class="mt-5 mb-5 d-grid gap-2">
+            <div class="mt-5 mb-5 d-grid gap-2 create-user-button">
               <a class="btn btn-primary" onclick="createUser()">Cadastrar</a>
             </div>
           </div>

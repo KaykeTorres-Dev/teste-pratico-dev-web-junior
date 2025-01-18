@@ -142,7 +142,7 @@ function sendUserData(userData) {
     })
     .then(response => {
         if (!response.ok && response.status !== 422) {
-            throw new Error("Erro ao enviar os dados!");
+            throw new Error("Erro ao enviar os dados, por favor tente novamente!");
         } else if (!response.ok && response.status == 422) {
             throw new Error("Email já está cadastrado, por favor digite outro email!");
         }
