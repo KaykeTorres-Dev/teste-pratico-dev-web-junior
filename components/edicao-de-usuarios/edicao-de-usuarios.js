@@ -34,6 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(error => {
         if (error.message == "Failed to fetch") {
+            const updateUserButton = document.querySelector("button");
+            updateUserButton.setAttribute("disabled", "");
             toast("Erro ao carregar os dados do usuário, por favor tente novamente!", "danger");
         } else {
             const errorMessage = errorMessageFormatted(error);
