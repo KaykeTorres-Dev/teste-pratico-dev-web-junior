@@ -75,7 +75,6 @@
     position: relative;
 }
 
-
 .table-secondary {
     --bs-table-bg: #dddddd;
 }
@@ -113,10 +112,3 @@
 .d-none {
     display: none !important;
 }
-
-
-
-
-
-
-

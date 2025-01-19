@@ -11,11 +11,6 @@ function checkNameInput() {
     }
 }
 
-const validateEmail = (email) => {
-    const regex = /^[^\s]+@[^\s]+\.[^\s]+$/;
-    return regex.test(email);
-};
-
 function checkEmailInput() { 
     const userEmail = document.getElementById("userEmail");
     const isEmailValid = validateEmail(userEmail.value);
@@ -40,6 +35,11 @@ function checkEmailInput() {
         userEmail.classList.add("is-invalid"); 
     }
 }
+
+const validateEmail = (email) => {
+    const regex = /^[^\s]+@[^\s]+\.[^\s]+$/;
+    return regex.test(email);
+};
 
 function checkPasswordInput() {
     const userPassword = document.getElementById("userPassword");
@@ -86,17 +86,17 @@ function createUser() {
   
     const missingFields = [];
   
-    if (userName.value === "") {
+    if (userName.value == "") {
       missingFields.push("name");
       userName.classList.add("is-invalid"); 
     }
 
-    if (userEmail.value === "") {
+    if (userEmail.value == "") {
       missingFields.push("email");
       userEmail.classList.add("is-invalid"); 
     }
 
-    if (userPassword.value === "" || userPassword.value.length <= 5) {
+    if (userPassword.value == "" || userPassword.value.length <= 5) {
       missingFields.push("password");
       userPassword.classList.add("is-invalid"); 
     }
@@ -142,7 +142,7 @@ function sendUserData(userData) {
     })
     .then(response => {
         if (!response.ok && response.status !== 422) {
-            throw new Error("Erro ao enviar os dados, por favor tente novamente!");
+            throw new Error("Erro ao cadastrar usuário, por favor tente novamente!");
         } else if (!response.ok && response.status == 422) {
             throw new Error("Email já está cadastrado, por favor digite outro email!");
         }
@@ -153,8 +153,12 @@ function sendUserData(userData) {
         window.location.href = "http://127.0.0.1:5500/components/listagem-de-usuarios/listagem-de-usuarios.html";
     })
     .catch(error => {
-        const errorMessage = errorMessageFormatted(error);
-        toast(errorMessage, "danger");
-        console.error("Erro ao criar usuário", error);
+        if (error.message == "Failed to fetch") {
+            toast("Erro ao cadastrar usuário, por favor tente novamente!", "danger");
+        } else {
+            const errorMessage = errorMessageFormatted(error);
+            toast(errorMessage, "danger");
+            console.error(error);
+        }    
     });
 }

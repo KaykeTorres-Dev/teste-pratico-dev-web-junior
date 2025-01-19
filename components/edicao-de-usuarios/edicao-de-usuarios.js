@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(data => {
         originalUserData = {
             name:  data.users.name,
-            email:  data.users.email,
+            email:  data.users.email
         }
 
         userId.value = data.users.id,
@@ -33,9 +33,13 @@ document.addEventListener("DOMContentLoaded", () => {
         userPassword.value = data.users.password
     })
     .catch(error => {
-        const errorMessage = errorMessageFormatted(error);
-        toast(errorMessage, "danger");
-        console.error("Erro ao carregar os dados do usuário", error);
+        if (error.message == "Failed to fetch") {
+            toast("Erro ao carregar os dados do usuário, por favor tente novamente!", "danger");
+        } else {
+            const errorMessage = errorMessageFormatted(error);
+            toast(errorMessage, "danger");
+            console.error(error);
+        }
     });
     
 });
@@ -99,12 +103,12 @@ function updateUser() {
   
     const missingFields = [];
   
-    if (userName.value === "") {
+    if (userName.value == "") {
       missingFields.push("name");
       userName.classList.add("is-invalid"); 
     }
 
-    if (userEmail.value === "") {
+    if (userEmail.value == "") {
       missingFields.push("email");
       userEmail.classList.add("is-invalid"); 
     }
@@ -127,7 +131,7 @@ function updateUser() {
         toast("Preencha todos os campos!", "danger");
         return;
 
-    } else if (!hasUserModifiedData()){
+    } else if (!hasUserUpdatedInput()){
         toast("Atualize os dados!", "danger");
         return;
 
@@ -141,7 +145,7 @@ function updateUser() {
     }   
 }
 
-function hasUserModifiedData() {
+function hasUserUpdatedInput() {
     return (userName.value !== originalUserData.name || userEmail.value !== originalUserData.email);
 }
 
@@ -156,7 +160,7 @@ function updateUserData(userData) {
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error("Erro ao atualizar os dados!");
+            throw new Error("Erro ao atualizar os dados, por favor tente novamente!");
         }
         return response.json();
     })
@@ -167,6 +171,6 @@ function updateUserData(userData) {
     .catch(error => {
         const errorMessage = errorMessageFormatted(error);
         toast(errorMessage, "danger");
-        console.error("Erro ao atualizar usuário", error);
+        console.error(error);
     });
 }

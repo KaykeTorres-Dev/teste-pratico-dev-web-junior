@@ -14,10 +14,9 @@ fetch("http://127.0.0.1:8000/api/get-users", {
   const usersData = serverData.users;
   const tableHead = document.querySelector("table thead");
   const tableBody = document.querySelector("table tbody");
-
   const noDataContainer = document.getElementById("no-data");
 
-  if (usersData.length === 0) {
+  if (usersData.length == 0) {
     noDataContainer.classList.remove("d-none");
   
   } else {
@@ -33,9 +32,13 @@ fetch("http://127.0.0.1:8000/api/get-users", {
   }
 })
 .catch(error => {
-  const errorMessage = errorMessageFormatted(error);
-  toast(errorMessage, "danger");
-  console.error("Erro ao carregar lista de usuários:", error);
+  if (error.message == "Failed to fetch") {
+    toast("Erro ao carregar lista de usuários, por favor tente novamente!", "danger");
+  } else {
+    const errorMessage = errorMessageFormatted(error);
+    toast(errorMessage, "danger");
+    console.error(error);
+  }
 });
 
 function createTableHead() {
@@ -93,7 +96,6 @@ function createActionButtons(userData) {
     });
   });
 
-  
   const deleteButton = document.createElement("button");
   deleteButton.classList.add("btn", "btn-outline-danger", "delete-user-button");
   deleteButton.innerHTML = '<i class="bi bi-person-x"></i>';
@@ -120,7 +122,6 @@ function goToeditUserPage(userId) {
   window.location.href = editUserUrl;
 }
   
-  
 function deleteUser(userId) {
   fetch(`http://127.0.0.1:8000/api/delete-user/${userId}`, {
     method: "DELETE",
@@ -131,7 +132,7 @@ function deleteUser(userId) {
   })
   .then(response => {
     if (!response.ok) {
-      throw new Error("Erro ao excluir o usuário. Por favor, tente novamente.");
+      throw new Error("Erro ao excluir o usuário, por favor, tente novamente!");
     }
     return response.json();
   })
@@ -143,6 +144,6 @@ function deleteUser(userId) {
   .catch(error => {
     const errorMessage = errorMessageFormatted(error);
     toast(errorMessage, "danger");
-    console.error("Erro ao excluir usuário:", error);
+    console.error(error);
   });
 }
