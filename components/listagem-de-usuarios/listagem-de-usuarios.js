@@ -34,7 +34,10 @@ fetch("http://127.0.0.1:8000/api/users/get-users", {
 .catch(error => {
   if (error.message == "Failed to fetch") {
     toast("Erro ao carregar lista de usuários, por favor tente novamente!", "danger");
+    const serverDownContainer = document.getElementById("server-down");
+    serverDownContainer.classList.remove("d-none");
   } else {
+    serverDownContainer.classList.add("d-none");
     const errorMessage = errorMessageFormatted(error);
     toast(errorMessage, "danger");
     console.error(error);
