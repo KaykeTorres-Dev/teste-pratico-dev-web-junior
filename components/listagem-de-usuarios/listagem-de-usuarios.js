@@ -1,4 +1,4 @@
-fetch("http://127.0.0.1:8000/api/get-users", {
+fetch("http://127.0.0.1:8000/api/users/get-users", {
   method: "GET",
   headers: {
     "Content-Type": "application/json"
@@ -123,7 +123,7 @@ function goToeditUserPage(userId) {
 }
   
 function deleteUser(userId) {
-  fetch(`http://127.0.0.1:8000/api/delete-user/${userId}`, {
+  fetch(`http://127.0.0.1:8000/api/users/delete-user/${userId}`, {
     method: "DELETE",
     headers: {
         "Content-Type": "application/json"

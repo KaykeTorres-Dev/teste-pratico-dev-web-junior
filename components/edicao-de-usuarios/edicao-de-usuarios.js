@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const userPassword = document.getElementById("userPassword");
     
 
-    fetch(`http://127.0.0.1:8000/api/get-user/${userIdParam}`, {
+    fetch(`http://127.0.0.1:8000/api/users/get-user/${userIdParam}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -151,7 +151,7 @@ function hasUserUpdatedInput() {
 
 function updateUserData(userData) {
     
-    fetch(`http://127.0.0.1:8000/api/update-user/${userId.value}`, {
+    fetch(`http://127.0.0.1:8000/api/users/update-user/${userId.value}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
