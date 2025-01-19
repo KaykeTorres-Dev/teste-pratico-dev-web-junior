@@ -91,12 +91,15 @@ function createActionButtons(userData) {
   editButton.addEventListener("click", () => {
     const editUserModal = new bootstrap.Modal(document.getElementById("editUserModal"));
     editUserModal.show();
-    
+
     const editModalButton = document.getElementById("editUserButton");
-    editModalButton.addEventListener("click", () => {
+    const handleEditClick = () => {
       goToeditUserPage(userId);
       editUserModal.hide();
-    });
+      editModalButton.removeEventListener("click", handleEditClick);
+    };
+
+    editModalButton.addEventListener("click", handleEditClick);
   });
 
   const deleteButton = document.createElement("button");
@@ -108,10 +111,13 @@ function createActionButtons(userData) {
     deleteUserModal.show();
 
     const deleteModalButton = document.getElementById("deleteUserButton");
-    deleteModalButton.addEventListener("click", () => {
+    const handleDeleteClick = () => {
       deleteUser(userId);
       deleteUserModal.hide();
-    });
+      deleteModalButton.removeEventListener("click", handleDeleteClick);
+    };
+
+    deleteModalButton.addEventListener("click", handleDeleteClick);
   });
 
   actionsCell.appendChild(editButton);
@@ -145,8 +151,12 @@ function deleteUser(userId) {
       
   })
   .catch(error => {
-    const errorMessage = errorMessageFormatted(error);
-    toast(errorMessage, "danger");
-    console.error(error);
+    if (error.message == "Failed to fetch") {
+      toast("Erro ao excluir o usuário, por favor, tente novamente!", "danger");
+    } else {
+      const errorMessage = errorMessageFormatted(error);
+      toast(errorMessage, "danger");
+      console.error(error);
+    }
   });
 }
