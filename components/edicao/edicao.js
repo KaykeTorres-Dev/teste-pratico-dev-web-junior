@@ -171,8 +171,12 @@ function updateUserData(userData) {
         window.location.href = "http://127.0.0.1:5500/components/usuarios-cadastrados/usuarios-cadastrados.html";
     })
     .catch(error => {
-        const errorMessage = errorMessageFormatted(error);
-        toast(errorMessage, "danger");
-        console.error(error);
+        if (error.message == "Failed to fetch") {
+            toast("Erro ao atualizar os dados do usuário, por favor tente novamente!", "danger");
+        } else {
+            const errorMessage = errorMessageFormatted(error);
+            toast(errorMessage, "danger");
+            console.error(error);
+        }    
     });
 }
