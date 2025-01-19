@@ -150,7 +150,7 @@ function sendUserData(userData) {
     })
     .then(data => {
         toast("Usuário criado com sucesso!", "success");
-        window.location.href = "http://127.0.0.1:5500/components/listagem-de-usuarios/listagem-de-usuarios.html";
+        window.location.href = "http://127.0.0.1:5500/components/usuarios-cadastrados/usuarios-cadastrados.html";
     })
     .catch(error => {
         if (error.message == "Failed to fetch") {

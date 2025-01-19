@@ -13,7 +13,7 @@ git clone https://github.com/KaykeTorres-Dev/https://github.com/KaykeTorres-Dev/
 
 ## Como rodar o projeto
 * Instale a extensão <a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Service</a> disponível no <a href="https://code.visualstudio.com/">Visual Studio Code</a>;
-* Acesse o componente cadastro-de-usuarios.html e clique em Go Live localizado no canto inferior direito: ![como-acessar-extensao-live-service](https://github.com/user-attachments/assets/9e3b283e-218c-48ee-9db1-7199c72aabfa)
+* Acesse o componente cadastro.html e clique em Go Live localizado no canto inferior direito: ![como-acessar-extensao-live-service](https://github.com/user-attachments/assets/9e3b283e-218c-48ee-9db1-7199c72aabfa)
  
 
 

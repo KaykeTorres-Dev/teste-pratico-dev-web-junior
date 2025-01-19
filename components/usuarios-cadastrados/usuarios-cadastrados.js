@@ -121,7 +121,7 @@ function createActionButtons(userData) {
 }
 
 function goToeditUserPage(userId) {
-  const editUserUrl = "http://127.0.0.1:5500/components/edicao-de-usuarios/edicao-de-usuarios.html?id=" + userId;
+  const editUserUrl = "http://127.0.0.1:5500/components/edicao/edicao.html?id=" + userId;
   window.location.href = editUserUrl;
 }
   

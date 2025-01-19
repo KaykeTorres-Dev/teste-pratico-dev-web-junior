@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cadastro</title>
+    <title>Edição</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="cadastro-de-usuarios.css">   
-    <script src="cadastro-de-usuarios.js"></script>
+    <link rel="stylesheet" href="edicao.css">
+    <script src="edicao.js"></script>
     <script src="/utils/toast/toast.js"></script>
     <script src="/utils/format-error-message/format-error-message.js"></script>
   </head>
@@ -14,61 +14,54 @@
     <div class="background">
       <nav class="navbar navbar-expand-lg bg-body-tertiary d-flex">
         <div>
-          <a class="navbar-brand" href="http://127.0.0.1:5500/components/cadastro-de-usuarios/cadastro-de-usuarios.html">
+          <a class="navbar-brand" href="http://127.0.0.1:5500/components/cadastro/cadastro.html">
             <img src="../../src/images/chromasoft.png" alt="" class="navbar-logo">
           </a>
           <div class="d-flex justify-content-between nav-items" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item nav-item-create-user">
-                <a class="nav-link active" aria-current="page"  href="http://127.0.0.1:5500/components/cadastro-de-usuarios/cadastro-de-usuarios.html">Cadastro</a>
+                <a class="nav-link" href="http://127.0.0.1:5500/components/cadastro/cadastro.html">Cadastro</a>
               </li>
               <li class="nav-item nav-item-users-list">
-                <a class="nav-link" href="http://127.0.0.1:5500/components/listagem-de-usuarios/listagem-de-usuarios.html">Usuários cadastrados</a>
+                <a class="nav-link" href="http://127.0.0.1:5500/components/usuarios-cadastrados/usuarios-cadastrados.html">Usuários cadastrados</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
-      
+
       <div class="d-flex justify-content-center">
         <div class="card">
-  
-          <div class="mt-3 mb-3">
-            <h1>Cadastre-se</h1>
-         </div>
-  
+          <div class="mt-4">
+            <h1>Editar</h1>
+          </div>
           <div class="card-body">
-  
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="userId" placeholder="Text" hidden>
+            </div>
+
             <div class="form-floating mb-3">
               <input type="text" class="form-control" id="userName" placeholder="Text" oninput="checkNameInput()">
               <label for="userName">Nome</label>
-  
               <div>
                 <label id="nameValidationFeedback"></label>
               </div>
             </div>
-  
+
             <div class="form-floating mb-3">
               <input type="email" class="form-control" id="userEmail" placeholder="name@example.com" oninput="checkEmailInput()">
               <label for="userEmail">Email</label>
-  
               <div>
                 <label id="emailValidationFeedback"></label>
               </div>
             </div>
-            
-  
-            <div class="form-floating">
-              <input type="password" class="form-control" id="userPassword" placeholder="Password" oninput="checkPasswordInput()">
-              <label for="userPassword">Senha</label>
-  
-              <div>
-                <label id="passwordValidationFeedback"></label>
-              </div>
-            </div> 
-  
-            <div class="mt-5 mb-5 d-grid gap-2 create-user-button">
-              <a class="btn btn-primary" onclick="createUser()">Cadastrar</a>
+
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="userPassword" placeholder="Text" hidden>
+            </div>
+
+            <div class="mt-5 mb-5 d-grid gap-2">
+              <button class="btn btn-primary" onclick="updateUser()">Atualizar</button>
             </div>
           </div>
         </div>

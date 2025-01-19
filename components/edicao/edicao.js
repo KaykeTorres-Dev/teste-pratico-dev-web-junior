@@ -168,7 +168,7 @@ function updateUserData(userData) {
     })
     .then(data => {
         toast("Usuário atualizado com sucesso!", "success");
-        window.location.href = "http://127.0.0.1:5500/components/listagem-de-usuarios/listagem-de-usuarios.html";
+        window.location.href = "http://127.0.0.1:5500/components/usuarios-cadastrados/usuarios-cadastrados.html";
     })
     .catch(error => {
         const errorMessage = errorMessageFormatted(error);
