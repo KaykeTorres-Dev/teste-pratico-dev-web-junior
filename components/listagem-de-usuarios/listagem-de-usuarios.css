@@ -28,6 +28,10 @@
     .no-data-container {
         margin-top: 50px !important;
     }
+
+    .no-data-img {
+        width: 123px !important;
+    }
 }
 
 .navbar {
@@ -102,7 +106,7 @@
 
 .no-data-img {
     background-size: cover;
-    width: 10%;
+    width: 200px;
 }
 
 .no-data-message {
