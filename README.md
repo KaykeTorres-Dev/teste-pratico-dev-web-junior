@@ -5,6 +5,7 @@ Este projeto foi realizado utilizando Html, CSS, Javascript e Bootstrap 5.
 ## Requisitos
 
 * <a href="https://code.visualstudio.com/">Visual Studio Code</a>;
+* <a>Bootstrap 5</a>;
 * <a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Extensão Live Service</a>;
 * Clone o repositório:
  ```
